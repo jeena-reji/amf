@@ -3,10 +3,10 @@ name: IOSMCN Master workflow
 on:
   pull_request:
     branches:
-      - iosmcnmaster
+      - release
   push:
     branches:
-      - iosmcnmaster
+      - release   
 
 jobs:
   staticcheck:
@@ -51,7 +51,7 @@ jobs:
           
   lint:
     runs-on: ubuntu-latest
-    if: github.repository_owner == 'ios-mcn-core'
+    if: github.repository_owner == 'jeena-reji'
     steps:
       - uses: actions/checkout@v4
 
@@ -71,7 +71,7 @@ jobs:
   hadolint:
     name: hadolint
     runs-on: ubuntu-latest
-    if: github.repository_owner == 'ios-mcn-core'
+    if: github.repository_owner == 'jeena-reji'
 
     steps:
       - uses: actions/checkout@v4
@@ -84,7 +84,7 @@ jobs:
 
   license-check:
     runs-on: ubuntu-latest
-    if: github.repository_owner == 'ios-mcn-core'
+    if: github.repository_owner == 'jeena-reji'
     steps:
       - uses: actions/checkout@v4
 
@@ -93,7 +93,7 @@ jobs:
 
   fossa-check:
     runs-on: ubuntu-latest
-    if: github.repository_owner == 'ios-mcn-core'
+    if: github.repository_owner == 'jeena-reji'
     steps:
       - uses: actions/checkout@v4
 
@@ -104,7 +104,7 @@ jobs:
 
   unit-tests:
     runs-on: ubuntu-latest
-    if: github.repository_owner == 'ios-mcn-core'
+    if: github.repository_owner == 'jeena-reji'
     steps:
       - uses: actions/checkout@v4
 
@@ -120,13 +120,13 @@ jobs:
 
   docker-build-push-images:
     runs-on: ubuntu-latest
-    if: github.repository_owner == 'ios-mcn-core'
+    if: github.repository_owner == 'jeena-reji'
     needs: unit-tests
 
     env:
       REGISTRY: ghcr.io
       DOCKER_REGISTRY: ghcr.io/
-      DOCKER_REPOSITORY: ios-mcn-core/
+      DOCKER_REPOSITORY: jeena-reji/
       
     steps:
       - uses: actions/checkout@v4
